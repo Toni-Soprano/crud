@@ -1,0 +1,56 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+/* manage-users.component.css */
+.card {
+    border: none;
+    border-radius: 10px;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .card-title {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+  }
+  
+  .list-group-item {
+    border: none;
+    padding: 10px 15px;
+  }
+  
+  .btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .container {
+    max-width: 900px;
+  }
+  
+  .needs-validation .form-control:invalid {
+    border-color: #dc3545;
+  }
+  
+  .invalid-feedback {
+    display: block;
+  }
+  
+  .btn-success {
+    background-color: #28a745;
+    border: none;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  .bi-pencil {
+    margin-right: 5px;
+  }
+  

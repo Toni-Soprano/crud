@@ -1,0 +1,8 @@
+/* styles.css or custom CSS file */
+
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Set background color for the whole page */
+body {
+  background-color: #f0f0f0; /* Change the color as per your preference */
+}
