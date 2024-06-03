@@ -1,33 +1,40 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { AuthService } from '../Auth-service.service'; // Update the path as per your AuthService location
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  signupUsers:any[]=[];
-  signupObj: any = {
-    email:'',
-    userName: '',
-    password: ''
-  };
-
   loginObj: any = {
     userName: 'omar',
-    password: '123456'
+    password: '123456',
+    role: 'admin' // Added role property
   };
 
-  constructor(private router: Router) { }
-  ngOnInit(): void {}
-  login() {
-    alert("user logged in ")
-    // Simulate login logic here, for demonstration purposes always redirect
-    this.router.navigate(['/main']);
+  constructor(private authService: AuthService, private router: Router) {}
+
+  onLogin() {
+    this.authService.login(this.loginObj).subscribe(
+      () => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'User logged in'
+        }).then(() => {
+          this.router.navigate(['/main']); // Navigate to main content
+        });
+      },
+      () => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Invalid credentials'
+        });
+      }
+    );
   }
 }

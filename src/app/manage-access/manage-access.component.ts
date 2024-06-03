@@ -8,8 +8,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, of } from 'rxjs';
 @Component({
   selector: 'app-manage-access',
-  standalone: true,
-  imports: [CommonModule, FormsModule],
+  
   templateUrl: './manage-access.component.html',
   styleUrls: ['./manage-access.component.css']
 })

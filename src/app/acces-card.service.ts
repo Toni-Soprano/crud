@@ -11,11 +11,15 @@ export class AccessCardService {
 
   cardAdded = new EventEmitter<AccessCard>();
 
-  constructor() {
-    const storedCards = localStorage.getItem('accessCards');
-    if (storedCards) {
-      this.accessCards = JSON.parse(storedCards);
-      this.nextId = this.accessCards.length > 0 ? Math.max(...this.accessCards.map(card => card.id)) + 1 : 1;
+  constructor() { 
+    // Check if localStorage is available before using it
+    if (typeof localStorage !== 'undefined') {
+      const storedAccessCards = localStorage.getItem('accessCards');
+      if (storedAccessCards) {
+        this.accessCards = JSON.parse(storedAccessCards);
+      }
+    } else {
+      console.warn('localStorage is not available. Access cards will not be stored persistently.');
     }
   }
 
@@ -25,15 +29,30 @@ export class AccessCardService {
 
   deleteAccessCard(id: number): Observable<void> {
     this.accessCards = this.accessCards.filter(card => card.id !== id);
-    localStorage.setItem('accessCards', JSON.stringify(this.accessCards));
+    this.saveAccessCardsToLocalStorage();
     return of(undefined);
   }
 
   createAccessCard(card: AccessCard): Observable<AccessCard> {
     card.id = this.nextId++;
     this.accessCards.push(card);
-    localStorage.setItem('accessCards', JSON.stringify(this.accessCards));
+    this.saveAccessCardsToLocalStorage();
     this.cardAdded.emit(card);
     return of(card);
+  }
+
+  updateAccessCard(updatedCard: AccessCard): Observable<void> {
+    const index = this.accessCards.findIndex(c => c.id === updatedCard.id);
+    if (index !== -1) {
+      this.accessCards[index] = updatedCard;
+      this.saveAccessCardsToLocalStorage();
+    }
+    return of(undefined);
+  }
+
+  private saveAccessCardsToLocalStorage(): void {
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('accessCards', JSON.stringify(this.accessCards));
+    }
   }
 }

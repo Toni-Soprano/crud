@@ -1,19 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Users</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+
+    .sidebar {
+      background-color: #ffffff;
+      border-right: 1px solid #e6e6e6;
+      height: 100vh;
+      padding-top: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+    }
+
+    .sidebar .nav-link {
+      color: #333;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    .content h1 {
+      color: #333;
+    }
+
+    .content input.form-control {
+      border-color: #e6e6e6;
+      margin-bottom: 20px;
+    }
+
+    .content .table {
+      background-color: #ffffff;
+      border: 1px solid #e6e6e6;
+    }
+
+    .content .table th,
+    .content .table td {
+      border-color: #e6e6e6;
+    }
+
+    .content .table th {
+      background-color: #f8f9fa;
+    }
+    .sidebar .nav-link {
+  font-size: 16px; /* Adjust the font size as needed */
+}
+    .content .table-striped tbody tr:nth-of-type(odd) {
+      background-color: #f8f9fa;
+    }
+
+    .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      height: calc(100vh - 20px);
+    }
+    .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Higher z-index for the sidebar */
+  /* Other styles */
+}
+
+main {
+  margin-left: 150px;
+  z-index: 900; /* Lower z-index for the main content area */
+  /* Other styles */
+}
+
+    .rounded-circle {
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .col-lg-2.mr-20px {
+  max-width: none !important;
+}
+  </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Admin Dashboard</h1>
-        <nav class="nav justify-content-center">
-            <a class="nav-link btn btn-primary mx-2" routerLink="/access">View Access Cards</a>
-            <a class="nav-link btn btn-secondary mx-2" routerLink="/manage">Manage Access Cards</a>
-        </nav>
-         
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-lg-2 col-md-3 d-md-block sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/main']">
+                <i class="fas fa-home"></i> Home
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink='/manage' style="font-size: 16px;">
+                <i class="fas fa-edit"></i> Modifier les Cartes
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/notifications']">
+                <i class="fas fa-bell"></i> Notifications
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/saved-posts']">
+                <i class="fas fa-bookmark"></i> Saved posts
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/messages']">
+                <i class="fas fa-envelope"></i> Messages
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/users']">
+                <i class="fas fa-users"></i> Manage Users
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login']">
+                <i class="fas fa-sign-in-alt"></i> Login
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/access']">
+                <i class="fas fa-tasks"></i> Manage Access
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- /Sidebar -->
+      <!-- Content -->
+      <main role="main" class="col-lg-2 mr-20px" style="max-width: none !important;">        <div class="content">
+          <h1 class="text-center mb-4">Gestion de l'utilisateur</h1>
+          <div class="mb-4">
+            <input type="text" class="form-control" placeholder="Search" />
+          </div>
+          <router-outlet></router-outlet> <!-- This will render the routed components -->
+        </div>
+      </main>
+      <!-- /Content -->
     </div>
-    
-   
- 
+  </div>
+  <!-- Bootstrap JS (optional, only if you need Bootstrap JavaScript features) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

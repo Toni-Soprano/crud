@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 
- 
- 
+
+
 
 interface User {
   id: number;
@@ -14,8 +14,7 @@ interface User {
 }
 
 @Component({
-  imports:[FormsModule,CommonModule],
-  standalone:true,
+ 
   selector: 'app-manage-users',
   templateUrl: './manage-users.component.html',
   styleUrls: ['./manage-users.component.css']
