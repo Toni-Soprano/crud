@@ -1,17 +1,17 @@
-<div class="container d-flex justify-content-center align-items-center vh-100">
+<div class="container d-flex justify-content-center align-items-center  ">
   <div class="col-md-6">
     <div class="card shadow">
       <div class="card-body">
-        <h5 class="card-title text-center mb-4">Create Access Card</h5>
+        <h5 class="card-title text-start mb-4">Create Access Card</h5>
         <form (ngSubmit)="createAccessCard()" class="needs-validation" novalidate>
           <div class="form-group">
             <label for="cardId" class="form-label">Card ID:</label>
-            <input type="text" class="form-control" id="cardId" [(ngModel)]="accessCard.cardId" name="cardId" required>
+            <input type="text" class="form-control" id="cardId" [(ngModel)]="accessCard.cardId" name="cardId" required placeholder="Enter Card ID">
             <div class="invalid-feedback">Please enter a card ID.</div>
           </div>
           <div class="form-group">
             <label for="ownerName" class="form-label">Owner Name:</label>
-            <input type="text" class="form-control" id="ownerName" [(ngModel)]="accessCard.ownerName" name="ownerName" required>
+            <input type="text" class="form-control" id="ownerName" [(ngModel)]="accessCard.ownerName" name="ownerName" required placeholder="Enter Owner Name">
             <div class="invalid-feedback">Please enter the owner's name.</div>
           </div>
           <div class="form-group">
@@ -19,8 +19,7 @@
             <input type="date" class="form-control" id="validUntil" [(ngModel)]="accessCard.validUntil" name="validUntil" required>
             <div class="invalid-feedback">Please select a valid date.</div>
           </div>
-         
-          <div class="form-group form-check">
+          <div class="form-check form-group">
             <input type="checkbox" class="form-check-input" id="isActive" [(ngModel)]="accessCard.isActive" name="isActive">
             <label class="form-check-label" for="isActive">Is Active</label>
           </div>
